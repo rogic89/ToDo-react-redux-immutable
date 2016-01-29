@@ -8,6 +8,12 @@ export default class TodoList extends Component {
     dispatch: PropTypes.func.isRequired,
   }
 
+  shouldComponentUpdate(nextProps) {
+    // immutableJS will change `todo` object reference only if some change occur
+    // so it is safe to place equality check on that object
+    return this.props.todo !== nextProps.todo;
+  }
+
   filterTodos() {
     switch (this.props.todos.get('activeFilter')) {
     case 'completed':
