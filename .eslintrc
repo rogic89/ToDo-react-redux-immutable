@@ -1,0 +1,21 @@
+{
+  "extends": "airbnb",
+  "rules": {
+    "max-len": [1, 120, 2, {
+      "ignoreComments": true
+    }],
+    "react/jsx-indent-props": [2, 4],
+    "no-console": 0,
+    "no-undef": [2]
+  },
+  "env": {
+    "browser": true
+  },
+  "globals": {
+    "__DEV__"      : false,
+    "__PROD__"     : false,
+    "__DEBUG__"    : false,
+    "__DEBUG_NW__" : false,
+    "BACKEND": true
+  }
+}
