@@ -13,11 +13,14 @@ class App extends Component {
 
   render() {
     return (
-      <div className="todos-wrapper">
-        <h2>ToDo App</h2>
-        <AddTodo dispatch={this.props.dispatch}/>
-        <TodoList dispatch={this.props.dispatch} todos={this.props.todos}/>
-        <Footer dispatch={this.props.dispatch} activeFilter={this.props.todos.get('activeFilter')}/>
+      <div className="app">
+        <div className="todos">
+          <h1>ToDo App</h1>
+          <AddTodo dispatch={this.props.dispatch}/>
+          <TodoList dispatch={this.props.dispatch} todos={this.props.todos}/>
+          <Footer dispatch={this.props.dispatch} activeFilter={this.props.todos.get('activeFilter')}/>
+        </div>
+        <small className="signature">by <b>Ivan Rogić</b> from <b>Toptal</b></small>
       </div>
     );
   }
