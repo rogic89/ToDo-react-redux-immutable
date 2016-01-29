@@ -1,5 +1,6 @@
 import * as types from 'constants/ActionTypes';
 
+let id = 4;
 const __getTodos = todos => ({ type: types.GET_TODOS, todos });
 
 export function getTodos() {
@@ -28,6 +29,10 @@ export function getTodos() {
 }
 
 
+export const addTodo = text => {
+  id++;
+  return { type: types.ADD_TODO, text, id };
+};
 export const deleteTodo = index => ({ type: types.DELETE_TODO, index });
 export const deleteAllTodos = () => ({ type: types.DELETE_ALL_TODOS });
 export const completeTodo = (index, isCompleted) => ({ type: types.COMPLETE_TODO, index, isCompleted });
