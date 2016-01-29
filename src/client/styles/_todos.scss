@@ -1,0 +1,22 @@
+.todos-wrapper {
+  margin: 100px auto;
+  width: 600px;
+  background-color: rgb(238, 238, 238);
+  border-radius: 5px;
+  padding: 30px;
+  .list-group-item {
+    padding: 0;
+  }
+  .todo {
+    width: 95%;
+    padding: 10px 15px;
+    display: inline-block;
+  }
+  .close {
+    width: 25px;
+    margin-top: 7px;
+  }
+  .completed {
+    text-decoration: line-through;
+  }
+}
