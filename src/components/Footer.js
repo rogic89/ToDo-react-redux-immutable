@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import { getTodos, deleteAllTodos, changeFilter } from 'actions/todos';
+import { deleteAllTodos, changeFilter } from 'actions/todos';
 import cn from 'classnames';
 
 export default class Footer extends Component {
@@ -32,7 +32,6 @@ export default class Footer extends Component {
           })}
         </div>
         <div className="pull-right">
-          <button className="btn btn-primary" onClick={() => dispatch(getTodos())}>Reset</button>
           <button className="btn btn-danger" onClick={() => dispatch(deleteAllTodos())}>Delete all</button>
         </div>
       </div>

@@ -8,29 +8,17 @@ const config = new Map();
 // ------------------------------------
 // User Configuration
 // ------------------------------------
-// NOTE: Due to limitations with Webpack's custom require, which is used for
-// looking up all *.spec.js files, if you edit dir_src you must also edit
-// the path in ~/karma.entry.js.
 config.set('cache', false);
-config.set('dir_src',  'src/client');
+config.set('dir_src',  'src');
 config.set('dir_dist', 'dist');
-
-config.set('coverage_enabled', !argv.watch);
-config.set('coverage_reporters', [
-  { type : 'text-summary' },
-  { type : 'html', dir : 'coverage' }
-]);
 
 config.set('webpack_host',  'localhost');
 config.set('webpack_port', process.env.PORT || 3000);
 
 config.set('vendor_dependencies', [
-  'history',
   'react',
   'react-redux',
-  'react-router',
   'redux',
-  'redux-router',
   'redux-devtools',
   'redux-devtools/lib/react'
 ]);
@@ -53,10 +41,6 @@ config.set('globals', {
   },
   'NODE_ENV'     : config.get('env'),
   '__DEV__'      : config.get('env') === 'development',
-  '__PROD__'     : config.get('env') === 'production',
-  '__DEBUG__'    : config.get('env') === 'development' && !argv.no_debug,
-  '__DEBUG_NW__' : !!argv.nw,
-  'BACKEND': JSON.stringify(argv.backend),
 });
 
 // ------------------------------------
@@ -93,7 +77,6 @@ config.set('utils_aliases', [
   'components',
   'constants',
   'reducers',
-  'routes',
   'styles',
 ].reduce((acc, x) => ((acc[x] = paths.src(x)) && acc), {}));
 

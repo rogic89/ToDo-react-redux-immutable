@@ -10,7 +10,7 @@ export default class Todo extends Component {
   }
 
   componentWillMount() {
-    console.info('ToDo initial render');
+    console.info('%cToDo mounting- ID: ' + this.props.todo.get('id'), 'color: green;font-weight:bold;');
   }
 
   shouldComponentUpdate(nextProps) {
@@ -20,11 +20,11 @@ export default class Todo extends Component {
   }
 
   componentWillUpdate(nextProps) {
-    console.info('ToDo will update - ID: ' + nextProps.todo.get('id'));
+    console.info('%cToDo updating - ID: ' + nextProps.todo.get('id'), 'color: blue;font-weight:bold;');
   }
 
   componentWillUnmount() {
-    console.info('ToDo unmounting - ID: ' + this.props.todo.get('id'));
+    console.info('%cToDo unmounting - ID: ' + this.props.todo.get('id'), 'color: orange;font-weight:bold;');
   }
 
   render() {
@@ -35,7 +35,7 @@ export default class Todo extends Component {
     return (
       <li className="list-group-item">
         <span className={classNames}
-            onClick={() => this.props.dispatch(completeTodo(id, isCompleted))}>
+            onClick={() => this.props.dispatch(completeTodo(id))}>
           {text}
         </span>
         <div className="close"

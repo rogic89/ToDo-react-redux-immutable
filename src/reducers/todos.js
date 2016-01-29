@@ -19,6 +19,7 @@ export default (state = initialState, action) => {
 
   case types.COMPLETE_TODO:
     return state.mergeDeep({
+      // map through todos to find matching ID
       todos: state.get('todos').map(todo => {
         if (todo.get('id') === action.id) {
           return todo.set('isCompleted', !todo.get('isCompleted'));
@@ -29,6 +30,7 @@ export default (state = initialState, action) => {
 
   case types.DELETE_TODO:
     let deleteIndex;
+    // map through todos to find matching deleteIndex
     state.get('todos').map((todo, index) => {
       if (todo.get('id') === action.id) {
         deleteIndex = index;
@@ -42,6 +44,7 @@ export default (state = initialState, action) => {
     return initialState;
 
   case types.CHANGE_FILTER:
+    console.info('%cFilter changed: ' + action.filter.toUpperCase(), 'color: red;font-weight:bold;');
     return state.set('activeFilter', action.filter);
 
   default:

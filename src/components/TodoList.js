@@ -1,10 +1,7 @@
 import React, { Component, PropTypes } from 'react';
-import { connect } from 'react-redux';
 import Todo from './Todo';
-import AddTodo from './AddTodo';
-import Footer from './Footer';
 
-class TodoList extends Component {
+export default class TodoList extends Component {
 
   static propTypes = {
     todos: PropTypes.object.isRequired,
@@ -25,9 +22,7 @@ class TodoList extends Component {
   render() {
     const todos = this.filterTodos();
     return (
-      <div className="todos-wrapper">
-        <h2>ToDo</h2>
-        <AddTodo dispatch={this.props.dispatch}/>
+      <div>
         {!!todos.size && (
           <ul className="list-group">
             {todos.map(todo => {
@@ -39,14 +34,7 @@ class TodoList extends Component {
             })}
           </ul>
         )}
-        <Footer
-            activeFilter={this.props.todos.get('activeFilter')}
-            dispatch={this.props.dispatch}/>
       </div>
     );
   }
 }
-
-const mapStateToProps = state => ({todos: state.todos});
-
-export default connect(mapStateToProps)(TodoList);

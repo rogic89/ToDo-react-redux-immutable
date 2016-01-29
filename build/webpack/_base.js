@@ -89,13 +89,4 @@ const webpackConfig = {
   }
 };
 
-// NOTE: this is a temporary workaround. I don't know how to get Karma
-// to include the vendor bundle that webpack creates, so to get around that
-// we remove the bundle splitting when webpack is used with Karma.
-const commonChunkPlugin = new webpack.optimize.CommonsChunkPlugin(
-  'vendor', filename
-);
-commonChunkPlugin.__KARMA_IGNORE__ = true;
-webpackConfig.plugins.push(commonChunkPlugin);
-
 export default webpackConfig;

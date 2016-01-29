@@ -13,17 +13,12 @@ Structure
 ├── build                        # All build-related configuration
 │   ├── webpack                  # Environment-specific configuration files for Webpack
 ├── config                       # Project configuration settings
-└── src                          # App group folder
-    ├── client                   # App source code
-    │   ├── actions              # Redux actions
-    │   ├── components           # Generic React Components (generally Dumb components)
-    │   ├── constants            # Constants for Redux actions and route access rights
-    │   ├── reducers             # Redux reducers (all are imported in index.js)
-    │   ├── styles               # App SASS styles, all are imported into app.scss
-    │   ├── App.js               # Main App component
-    │   ├── init.js              # App bootstrap and rendering
-    │   ├── routes.js            # App routes
-    │   └── store.js             # App store definition
-    .
-
+└── src                          # App source code
+    ├── actions                  # Redux actions
+    ├── components               # Generic React Components
+    ├── constants                # Constants for Redux actions
+    ├── reducers                 # Redux reducers (all are imported in index.js)
+    ├── styles                   # App SASS styles, all are imported into app.scss
+    ├── index.html               # Most basic index.html
+    └── init.js                  # App bootstrap and rendering
 ```

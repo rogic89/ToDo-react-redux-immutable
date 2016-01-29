@@ -4,8 +4,18 @@
   background-color: rgb(238, 238, 238);
   border-radius: 5px;
   padding: 30px;
+  border: 1px solid;
+  border-bottom-width: 2px;
+  border-color: rgba(0,0,0,0.075);
+
   .list-group-item {
     padding: 0;
+
+    &:hover {
+      cursor: pointer;
+      background-color: rgb(252, 252, 252);
+      box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+    }
   }
   .todo {
     width: 95%;
@@ -17,6 +27,7 @@
     margin-top: 7px;
   }
   .completed {
+    opacity: 0.6;
     text-decoration: line-through;
   }
   hr {
