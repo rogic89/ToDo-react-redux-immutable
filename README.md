@@ -1,8 +1,18 @@
 Tips, trick and best practices using React, Redux and ImmutableJS
 =======================
 
-$ npm install                   # Install Node modules listed in ./package.json
-$ npm start                     # Compile and launch
+ToDo App shows how to use Redux and ImmutableJS to avoid needless re-rendering of React components.
+
+Console Logs are conveniently placed on key points to clearly show absolute minimal DOM re-render.
+
+Usage
+-----
+
+#### `npm install`
+Install Node modules listed in ./package.json`
+
+#### `npm start`
+Runs the webpack build system with HMR. Webpack dev server can be found at `localhost:3000`.
 
 Structure
 ---------

@@ -29,16 +29,9 @@ export default (state = initialState, action) => {
     });
 
   case types.DELETE_TODO:
-    let deleteIndex;
-    // map through todos to find matching deleteIndex
-    state.get('todos').map((todo, index) => {
-      if (todo.get('id') === action.id) {
-        deleteIndex = index;
-      }
-      return todo;
+    return state.mergeDeep({
+      todos: state.get('todos').filter(todo => todo.get('id') !== action.id),
     });
-
-    return state.deleteIn(['todos', deleteIndex]);
 
   case types.DELETE_ALL_TODOS:
     return initialState;
