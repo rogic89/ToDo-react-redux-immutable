@@ -22,4 +22,11 @@
   hr {
     border-color: rgb(200, 200, 200);
   }
+  .filter {
+    text-transform: capitalize;
+  }
+}
+
+button {
+  outline: none !important;
 }

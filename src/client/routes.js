@@ -1,10 +1,10 @@
 import { Route, IndexRoute } from 'react-router';
 import React from 'react';
 import CoreLayout from './components/CoreLayout';
-import Todos from './components/Todos';
+import TodoList from './components/TodoList';
 
 export default (
   <Route path="/" component={CoreLayout}>
-    <IndexRoute component={Todos}/>
+    <IndexRoute component={TodoList}/>
   </Route>
 );

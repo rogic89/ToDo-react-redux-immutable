@@ -2,46 +2,47 @@ import * as types from 'constants/ActionTypes';
 import { fromJS } from 'immutable';
 
 const initialState = fromJS({
+  activeFilter: 'all',
   todos: [],
 });
 
-// I could have made initialState to look like:
-// const initialState = fromJS([]);
-// and it would work well for this case, but in a real app you will most likely have initialState looking like:
-// const initialState = fromJS({
-//   isFetching: false,
-//   success: false,
-//   error: false,
-//   todos: [],
-// });
-
 export default (state = initialState, action) => {
   switch (action.type) {
-  case types.GET_TODOS:
-    // must use `mergeDeep` instead of `merge` because `todos` is nested data and simple `merge` will replace entire array and will not perserve reference
-    // try placing `merge` instead, click `Refresh` button and check console.info inside `ToDo` component
+  case types.ADD_TODO:
     return state.mergeDeep({
-      todos: action.todos,
+      todos: state.get('todos').push(fromJS({
+        id: action.id,
+        text: action.text,
+        isCompleted: false,
+      })),
     });
 
-    // return state.setIn(['todos'], fromJS(action.todos));  // setting data like this will result in re-render
-
-  case types.ADD_TODO:
-    const todos = state.get('todos').push(fromJS({
-      id: action.id,
-      text: action.text,
-      isCompleted: false,
-    }));
-    return state.mergeDeep({todos});
-
   case types.COMPLETE_TODO:
-    return state.setIn(['todos', action.index, 'isCompleted'], !action.isCompleted);
+    return state.mergeDeep({
+      todos: state.get('todos').map(todo => {
+        if (todo.get('id') === action.id) {
+          return todo.set('isCompleted', !todo.get('isCompleted'));
+        }
+        return todo;
+      }),
+    });
 
   case types.DELETE_TODO:
-    return state.deleteIn(['todos', action.index]);
+    let deleteIndex;
+    state.get('todos').map((todo, index) => {
+      if (todo.get('id') === action.id) {
+        deleteIndex = index;
+      }
+      return todo;
+    });
+
+    return state.deleteIn(['todos', deleteIndex]);
 
   case types.DELETE_ALL_TODOS:
     return initialState;
+
+  case types.CHANGE_FILTER:
+    return state.set('activeFilter', action.filter);
 
   default:
     return state;
