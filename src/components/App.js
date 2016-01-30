@@ -7,18 +7,20 @@ import Footer from './Footer';
 class App extends Component {
 
   static propTypes = {
-    todos: PropTypes.object.isRequired,
+    activeFilter: PropTypes.string.isRequired,
+    todoList: PropTypes.object.isRequired,
     dispatch: PropTypes.func.isRequired,
   }
 
   render() {
+    const { dispatch, activeFilter, todoList } = this.props;
     return (
       <div className="app">
         <div className="todos">
           <h1>ToDo App</h1>
-          <AddTodo dispatch={this.props.dispatch}/>
-          <TodoList dispatch={this.props.dispatch} todos={this.props.todos}/>
-          <Footer dispatch={this.props.dispatch} activeFilter={this.props.todos.get('activeFilter')}/>
+          <AddTodo dispatch={dispatch}/>
+          <TodoList dispatch={dispatch} activeFilter={activeFilter} todoList={todoList}/>
+          <Footer dispatch={dispatch} activeFilter={activeFilter}/>
         </div>
         <small className="signature">by <b>Ivan Rogić</b> from <b>Toptal</b></small>
       </div>
@@ -26,6 +28,6 @@ class App extends Component {
   }
 }
 
-const mapStateToProps = state => ({todos: state.todos});
+const mapStateToProps = state => ({...state.todos});
 
 export default connect(mapStateToProps)(App);

@@ -4,34 +4,36 @@ import Todo from './Todo';
 export default class TodoList extends Component {
 
   static propTypes = {
-    todos: PropTypes.object.isRequired,
+    activeFilter: PropTypes.string.isRequired,
+    todoList: PropTypes.object.isRequired,
     dispatch: PropTypes.func.isRequired,
   }
 
   shouldComponentUpdate(nextProps) {
     // immutableJS will change `todo` object reference only if some change occur
     // so it is safe to place equality check on that object
-    return this.props.todo !== nextProps.todo;
+    return this.props.todoList !== nextProps.todoList ||
+           this.props.activeFilter !== nextProps.activeFilter;
   }
 
-  filterTodos() {
-    switch (this.props.todos.get('activeFilter')) {
+  filterTodoList() {
+    switch (this.props.activeFilter) {
     case 'completed':
-      return this.props.todos.get('todos').filter(todo => todo.get('isCompleted'));
+      return this.props.todoList.filter(todo => todo.get('isCompleted'));
     case 'active':
-      return this.props.todos.get('todos').filter(todo => !todo.get('isCompleted'));
+      return this.props.todoList.filter(todo => !todo.get('isCompleted'));
     default:
-      return this.props.todos.get('todos');
+      return this.props.todoList;
     }
   }
 
   render() {
-    const todos = this.filterTodos();
+    const todoList = this.filterTodoList();
     return (
       <div>
-        {!!todos.size && (
+        {!!todoList.size && (
           <ul className="list-group">
-            {todos.map(todo => {
+            {todoList.map(todo => {
               return (
                 <Todo key={todo.get('id')}
                     dispatch={this.props.dispatch}

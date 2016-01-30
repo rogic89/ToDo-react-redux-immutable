@@ -6,6 +6,7 @@
     }],
     "react/jsx-indent-props": [2, 4],
     "no-console": 0,
+    "new-cap": 0,
     "no-undef": [2]
   },
   "env": {
