@@ -1,10 +1,11 @@
-import React, { Component, PropTypes } from 'react';
+import React, { PropTypes } from 'react';
+import PureComponent from './PureComponent';
 import { connect } from 'react-redux';
 import TodoList from './TodoList';
 import AddTodo from './AddTodo';
 import Footer from './Footer';
 
-class App extends Component {
+class App extends PureComponent {
 
   static propTypes = {
     activeFilter: PropTypes.string.isRequired,

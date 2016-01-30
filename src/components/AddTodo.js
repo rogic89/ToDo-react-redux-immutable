@@ -8,6 +8,7 @@ export default class AddTodo extends Component {
   }
 
   shouldComponentUpdate() {
+    // component has no props or state so it is safe to just return `false`
     return false;
   }
 

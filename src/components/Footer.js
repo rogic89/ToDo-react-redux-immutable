@@ -1,16 +1,13 @@
-import React, { Component, PropTypes } from 'react';
+import React, { PropTypes } from 'react';
 import { deleteAllTodos, changeFilter } from 'actions/todos';
+import PureComponent from './PureComponent';
 import cn from 'classnames';
 
-export default class Footer extends Component {
+export default class Footer extends PureComponent {
 
   static propTypes = {
     activeFilter: PropTypes.string.isRequired,
     dispatch: PropTypes.func.isRequired,
-  }
-
-  shouldComponentUpdate(nextProps) {
-    return this.props.activeFilter !== nextProps.activeFilter;
   }
 
   filters = ['all', 'completed', 'active']
@@ -21,7 +18,7 @@ export default class Footer extends Component {
       <div>
         <div className="btn-group">
           {this.filters.map(filter => {
-            const className = cn('btn btn-default filter', {
+            const className = cn('btn btn-default capitalize', {
               active: this.props.activeFilter === filter,
             });
             return (

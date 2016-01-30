@@ -1,8 +1,9 @@
-import React, { Component, PropTypes } from 'react';
+import React, { PropTypes } from 'react';
 import { deleteTodo, completeTodo } from 'actions/todos';
+import PureComponent from './PureComponent';
 import cn from 'classnames';
 
-export default class Todo extends Component {
+export default class Todo extends PureComponent {
 
   static propTypes = {
     todo: PropTypes.object.isRequired,
@@ -10,21 +11,15 @@ export default class Todo extends Component {
   }
 
   componentWillMount() {
-    console.info('%cToDo mounting- ID: ' + this.props.todo.get('id'), 'color: green;font-weight:bold;');
-  }
-
-  shouldComponentUpdate(nextProps) {
-    // immutableJS will change `todo` object reference only if some change occur
-    // so it is safe to place equality check on that object
-    return this.props.todo !== nextProps.todo;
+    console.info('%cToDo mounting- ID: ' + this.props.todo.get('id'), 'color:green; font-weight:bold;');
   }
 
   componentWillUpdate(nextProps) {
-    console.info('%cToDo updating - ID: ' + nextProps.todo.get('id'), 'color: blue;font-weight:bold;');
+    console.info('%cToDo updating - ID: ' + nextProps.todo.get('id'), 'color:blue; font-weight:bold;');
   }
 
   componentWillUnmount() {
-    console.info('%cToDo unmounting - ID: ' + this.props.todo.get('id'), 'color: orange;font-weight:bold;');
+    console.info('%cToDo unmounting - ID: ' + this.props.todo.get('id'), 'color:orange; font-weight:bold;');
   }
 
   render() {

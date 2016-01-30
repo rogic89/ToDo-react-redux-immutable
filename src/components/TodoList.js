@@ -1,19 +1,13 @@
-import React, { Component, PropTypes } from 'react';
+import React, { PropTypes } from 'react';
+import PureComponent from './PureComponent';
 import Todo from './Todo';
 
-export default class TodoList extends Component {
+export default class TodoList extends PureComponent {
 
   static propTypes = {
     activeFilter: PropTypes.string.isRequired,
     todoList: PropTypes.object.isRequired,
     dispatch: PropTypes.func.isRequired,
-  }
-
-  shouldComponentUpdate(nextProps) {
-    // immutableJS will change `todo` object reference only if some change occur
-    // so it is safe to place equality check on that object
-    return this.props.todoList !== nextProps.todoList ||
-           this.props.activeFilter !== nextProps.activeFilter;
   }
 
   filterTodoList() {

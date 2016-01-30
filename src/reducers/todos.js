@@ -36,7 +36,7 @@ export default (state = initialState, action) => {
     return {...state};
 
   case types.CHANGE_FILTER:
-    console.info('%cFilter changed: ' + action.filter.toUpperCase(), 'color: red;font-weight:bold;');
+    console.info('%cFilter changed: ' + action.filter.toUpperCase(), 'color:red; font-weight:bold;');
     state.activeFilter = action.filter;
     return {...state};
 

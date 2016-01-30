@@ -17,24 +17,21 @@
         background-color: rgb(252, 252, 252);
         box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
       }
+      > .todo {
+        width: 95%;
+        padding: 10px 15px;
+        display: inline-block;
+      }
+      > .completed {
+        opacity: 0.6;
+        text-decoration: line-through;
+      }
+      > .close {
+        width: 25px;
+        margin-top: 7px;
+      }
     }
-    .todo {
-      width: 95%;
-      padding: 10px 15px;
-      display: inline-block;
-    }
-    .close {
-      width: 25px;
-      margin-top: 7px;
-    }
-    .completed {
-      opacity: 0.6;
-      text-decoration: line-through;
-    }
-    hr {
-      border-color: rgb(200, 200, 200);
-    }
-    .filter {
+    .capitalize {
       text-transform: capitalize;
     }
   }
