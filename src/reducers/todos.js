@@ -15,7 +15,7 @@ function todoList(state = List(), action) {
     // map through todos to find matching ID
     return state.map(todo => {
       if (todo.get('id') === action.id) {
-        return todo.set('isCompleted', !todo.get('isCompleted'));
+        return todo.update('isCompleted', v => !v);
       }
       return todo;
     });
