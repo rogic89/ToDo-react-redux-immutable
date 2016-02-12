@@ -29,6 +29,7 @@ Structure
     ├── constants                # Constants for Redux actions
     ├── reducers                 # Redux reducers (all are imported in index.js)
     ├── styles                   # App SASS styles, all are imported into app.scss
+    ├── utils                    # Reusable utility functions
     ├── index.html               # Most basic index.html
     └── init.js                  # App bootstrap and rendering
 ```

@@ -15,7 +15,7 @@ export default class TodoList extends PureComponent {
     case 'completed':
       return this.props.todoList.filter(todo => todo.get('isCompleted'));
     case 'active':
-      return this.props.todoList.filter(todo => !todo.get('isCompleted'));
+      return this.props.todoList.filterNot(todo => todo.get('isCompleted'));
     default:
       return this.props.todoList;
     }
