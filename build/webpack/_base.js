@@ -1,28 +1,28 @@
-import webpack           from 'webpack';
-import config            from '../../config';
-import HtmlWebpackPlugin from 'html-webpack-plugin';
+var webpack =           require ('webpack');
+var config =            require ('../../config');
+var HtmlWebpackPlugin = require ('html-webpack-plugin');
 
-const cache = config.get('cache');
-const paths = config.get('utils_paths');
+var cache = config.cache;
+var paths = config.utils_paths;
 
-const filename = cache ? '[name].[hash].js' : '[name].js';
+var filename = cache ? '[name].[hash].js' : '[name].js';
 
-const webpackConfig = {
+var webpackConfig = {
   name    : 'client',
   target  : 'web',
   entry   : {
     app : [
-      paths.project(config.get('dir_src')) + '/init.js',
+      paths.project(config.dir_src) + '/init.js',
     ],
-    vendor : config.get('vendor_dependencies')
+    vendor : config.vendor_dependencies
   },
   output : {
     filename   : filename,
-    path       : paths.project(config.get('dir_dist')),
+    path       : paths.project(config.dir_dist),
     publicPath : '/'
   },
   plugins : [
-    new webpack.DefinePlugin(config.get('globals')),
+    new webpack.DefinePlugin(config.globals),
     new webpack.optimize.OccurrenceOrderPlugin(),
     new webpack.optimize.DedupePlugin(),
     new HtmlWebpackPlugin({
@@ -34,7 +34,7 @@ const webpackConfig = {
   ],
   resolve : {
     extensions : ['', '.js', '.jsx'],
-    alias      : config.get('utils_aliases')
+    alias      : config.utils_aliases
   },
   module : {
     preLoaders : [
@@ -48,24 +48,7 @@ const webpackConfig = {
       {
         test : /\.(js|jsx)$/,
         exclude : /node_modules/,
-        loader  : 'babel',
-        query   : {
-          stage    : 0,
-          optional : ['runtime'],
-          env      : {
-            development : {
-              plugins : ['react-transform'],
-              extra   : {
-                'react-transform' : {
-                  transforms : [{
-                    transform : 'react-transform-catch-errors',
-                    imports   : ['react', 'redbox-react']
-                  }]
-                }
-              }
-            }
-          }
-        }
+        loader  : 'babel-loader'
       },
       {
         test    : /\.scss$/,
@@ -89,4 +72,4 @@ const webpackConfig = {
   }
 };
 
-export default webpackConfig;
+module.exports = webpackConfig;

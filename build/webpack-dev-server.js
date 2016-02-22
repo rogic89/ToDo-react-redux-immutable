@@ -1,12 +1,12 @@
-import webpack          from 'webpack';
-import WebpackDevServer from 'webpack-dev-server';
-import config           from '../config';
-import webpackConfig    from './webpack/development_hot';
+var webpack = require('webpack');
+var WebpackDevServer = require('webpack-dev-server');
+var config = require('../config');
+var webpackConfig = require('./webpack/development_hot');
 
-const paths = config.get('utils_paths');
+var paths = config.utils_paths;
 
-const server = new WebpackDevServer(webpack(webpackConfig), {
-  contentBase : paths.project(config.get('dir_src')),
+var server = new WebpackDevServer(webpack(webpackConfig), {
+  contentBase : paths.project(config.dir_src),
   hot    : true,
   quiet  : false,
   noInfo : false,
@@ -17,4 +17,4 @@ const server = new WebpackDevServer(webpack(webpackConfig), {
   historyApiFallback : true
 });
 
-export default server;
+module.exports = server;

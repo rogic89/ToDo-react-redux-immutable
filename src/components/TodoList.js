@@ -12,12 +12,12 @@ export default class TodoList extends PureComponent {
 
   filterTodoList() {
     switch (this.props.activeFilter) {
-    case 'completed':
-      return this.props.todoList.filter(todo => todo.get('isCompleted'));
-    case 'active':
-      return this.props.todoList.filterNot(todo => todo.get('isCompleted'));
-    default:
-      return this.props.todoList;
+      case 'completed':
+        return this.props.todoList.filter(todo => todo.get('isCompleted'));
+      case 'active':
+        return this.props.todoList.filterNot(todo => todo.get('isCompleted'));
+      default:
+        return this.props.todoList;
     }
   }
 
@@ -31,7 +31,8 @@ export default class TodoList extends PureComponent {
               return (
                 <Todo key={todo.get('id')}
                     dispatch={this.props.dispatch}
-                    todo={todo}/>
+                    todo={todo}
+                />
               );
             })}
           </ul>

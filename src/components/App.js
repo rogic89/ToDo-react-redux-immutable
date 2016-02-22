@@ -19,9 +19,9 @@ class App extends PureComponent {
       <div className="app">
         <div className="todos">
           <h1>ToDo App</h1>
-          <AddTodo dispatch={dispatch}/>
-          <TodoList dispatch={dispatch} activeFilter={activeFilter} todoList={todoList}/>
-          <Footer dispatch={dispatch} activeFilter={activeFilter}/>
+          <AddTodo dispatch={dispatch} />
+          <TodoList dispatch={dispatch} activeFilter={activeFilter} todoList={todoList} />
+          <Footer dispatch={dispatch} activeFilter={activeFilter} />
         </div>
         <small className="signature">by <b>Ivan Rogić</b> from <b>Toptal</b></small>
       </div>
@@ -29,6 +29,6 @@ class App extends PureComponent {
   }
 }
 
-const mapStateToProps = state => ({...state.todos});
+const mapStateToProps = state => ({ ...state.todos });
 
 export default connect(mapStateToProps)(App);
