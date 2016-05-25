@@ -19,8 +19,6 @@ config.vendor_dependencies = [
   'react',
   'react-redux',
   'redux',
-  'redux-devtools',
-  'redux-devtools/lib/react'
 ];
 
 /*  *********************************************
