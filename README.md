@@ -1,6 +1,8 @@
 Tips, trick and best practices using React, Redux and ImmutableJS
 =======================
 
+Check the article explaining the logic -> [https://www.toptal.com/react/react-redux-and-immutablejs](https://www.toptal.com/react/react-redux-and-immutablejs)
+
 ToDo App shows how to use Redux and ImmutableJS to avoid needless re-rendering of React components.
 
 Console Logs are conveniently placed on key points to clearly show absolute minimal DOM re-render.
